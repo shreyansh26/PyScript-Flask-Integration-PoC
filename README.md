@@ -1,6 +1,6 @@
 # PyScript-Flask Integration POC
 
-The POC aims to show how to use PyScript with Flask. The Flask server sends some data to the template, PyScript reads it using Pandas and makes a Matplotlib plot on the data. Additionally, I also show how more plots can be displayed on the webpage easily through the PyScript support for Numpy and Matplotlib.
+The PoC aims to show how to use PyScript with Flask. The Flask server sends some data to the template, PyScript reads it using Pandas and makes a Matplotlib plot on the data. Additionally, I also show how more plots can be displayed on the webpage easily through the PyScript support for Numpy and Matplotlib.
 
 ![](featured.png)
 

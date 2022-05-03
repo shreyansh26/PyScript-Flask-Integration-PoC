@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PyScript + Flask</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <py-env>
+        - numpy
+        - matplotlib
+        - pandas
+    </py-env>
+
+</head>
+
+<body>
+
+    <h1>POC on using Flask with PyScript along with Numpy, Pandas and Matplotlib</h1>
+
+    <div class="grid-container">
+
+        <div id="plot1" class="grid-child">
+            <div class="snippet" data-title=".dot-typing">
+                <div class="stage">
+                  <div class="dot-typing"></div>
+                </div>
+            </div>
+        </div>
+    
+        <div id="plot2" class="grid-child">
+            <div class="snippet" data-title=".dot-typing">
+                <div class="stage">
+                  <div class="dot-typing"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="plot3" class="grid-child">
+            <div class="snippet" data-title=".dot-typing">
+                <div class="stage">
+                  <div class="dot-typing"></div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+
+    <py-script>
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+np.random.seed(42)
+
+# Plot 1
+rv = np.random.standard_normal(1000)
+
+f1 = plt.figure(1)
+plt.hist(rv, bins=30)
+plt.title("Histogram of Standard Normal Distribution")
+pyscript.write('plot1', f1)
+
+# Plot 2
+df = pd.DataFrame({{data}})
+df.columns = ['Column1', 'Column2', 'Column3']
+
+f2 = plt.figure(2)
+plt.plot(df['Column1'], df['Column2'])
+plt.title("Linear plot of 'Column 1' and 'Column 2' of the dataframe shown below")
+plt.xlabel("Column 1")
+plt.ylabel("Column 2")
+pyscript.write('plot2', f2)
+        
+# Plot 3
+x = np.random.randn(1000)
+y = np.random.randn(1000)
+
+f3 = plt.figure(3)
+plt.scatter(x, y)
+plt.title("Scatter plot of random values")
+pyscript.write('plot3', f3)
+                    
+    </py-script>
+
+    <div>
+        <table class="table table-hover table-bordered" >
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Column 1</th>
+                    <th scope="col">Column 2</th>
+                    <th scope="col">Column 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <th>{{item[0]}}</th>
+                    <th>{{item[1]}}</th>
+                    <th>{{item[2]}}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
